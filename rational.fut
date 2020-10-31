@@ -30,3 +30,15 @@ let mul ({n=a,d=b }: ratio) ({n=c,d=d }: ratio): ratio =
 let div ({n=a,d=b }: ratio) ({n=c,d=d }: ratio): ratio =
   simplify {n = a*d, d = b*c}
 
+-- Unit tests
+
+entry simplify_test (a: [2]i64) : [2]i64 = 
+[(simplify {n=a[0],d=a[1]}).n, (simplify {n=a[0],d=a[1]}).d]
+
+-- Test of simplify function
+-- ==
+-- entry: simplify_test
+-- input  {[1i64,8i64]}
+-- output {[1i64,8i64]}
+-- input  {[12i64,16i64]}
+-- output {[3i64,4i64]}
